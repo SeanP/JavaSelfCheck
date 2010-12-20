@@ -1,0 +1,35 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            $(document).ready(function() {
+                $.ajax({
+                    type: 'GET',
+                    url: 'ActiveProjects',
+                    success: function(data) {
+                        $.each(data, function(k,v) {
+                            $('<option>').text(v).appendTo('select');
+                        });
+                    }
+                });
+            });
+        })();
+    </script>
+  </head>
+  <body>
+      <div>Welcome to SelfCheck on kata</div>
+      <form action="Check" method="POST" enctype="multipart/form-data">
+          <select name="project"></select>
+          <input type="file" name="file">
+          <input type="submit">
+      </form>
+  </body>
+</html>
